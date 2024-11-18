@@ -1,8 +1,10 @@
 import { LitElement, html, css } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
+import { connect } from "pwa-helpers";
+import store from "../../store";
 
 @customElement("employee-list")
-class EmployeeList extends LitElement {
+class EmployeeList extends connect(store)(LitElement) {
   static styles = css`
     :host {
       display: block;

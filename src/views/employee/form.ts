@@ -1,8 +1,9 @@
 import { LitElement, html, css } from "lit";
-import { customElement, property } from "lit/decorators.js";
-
+import { customElement } from "lit/decorators.js";
+import { connect } from "pwa-helpers";
+import store from "../../store";
 @customElement("employee-form")
-class EmployeeForm extends LitElement {
+class EmployeeForm extends connect(store)(LitElement) {
   static styles = css`
     :host {
       display: block;
@@ -41,11 +42,14 @@ class EmployeeForm extends LitElement {
     return html`
       <form>
         <p>This is Blog ${this.employeeId}</p>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" />
-
-        <label for="position">Position:</label>
-        <input type="text" id="position" name="position" />
+        <input type="text" id="name" name="name" placeholder="Name" />
+        <input type="text" id="last-name" name="last-name" placeholder="Last name" />
+        <input type="text" id="employment-date" name="employment-date" placeholder="employment-date" />
+        <input type="text" id="birth-date" name="birth-date" placeholder="birth-date" />
+        <input type="text" id="phone" name="phone" placeholder="phone" />
+        <input type="text" id="email" name="email" placeholder="email" />
+        <input type="text" id="department" name="department" placeholder="department" />
+        <input type="text" id="position" name="position" placeholder="position" />
 
         <button type="submit">Submit</button>
       </form>
